@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="var" path="GWT_HOME/gwt-user.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-html5-geolocation.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-oauth2-0.1.1-alpha.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-widgets-0.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/piriti-core-0.7b2.jar"/>
+	<classpathentry kind="lib" path="lib/piriti-restlet-0.7b2.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc4.jar"/>
+	<classpathentry kind="lib" path="lib/totoe-0.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA-sources.jar"/>
+	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

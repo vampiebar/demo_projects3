@@ -294,3 +294,86 @@ a:visited {
 	background-color: #e8eef7;
 	cursor: hand;
 }
+
+.gwt-SimplePanelMenuActive {
+	
+    display:block;
+	float:left;
+	width:160px;
+	height:39px;
+	background-position: left top;
+	text-shadow:0.1em 0.1em 0.1em #f2f5f6;
+	color: #42a7c1;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: normal;
+	line-height: 39px;
+	text-align: center;
+	background-repeat: repeat-x;
+	background-image: url('images/tabsactive_1.jpg');
+	cursor: pointer;
+	
+}
+
+.gwt-SimplePanelMenuInactive {
+	display:block;
+	float:left;
+	width:160px;
+	height:39px;
+	background-position: left top;
+	text-shadow:0.1em 0.1em 0.1em dimgrey;
+	color: snow;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: normal;
+	line-height: 39px;
+	text-align: center;
+	background-repeat: repeat-x;
+	background-image: url('images/tabsnormal_1.jpg');
+}
+.gwt-PanelRounded1 {
+	-webkit-border-radius: 8px;-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color:#90CC00;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px;
+	 box-shadow: #B3B3B3 4px 4px 4px;
+}
+.gwt-Label-1 {
+	color: white;
+	font-size: 14px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+.gwt-Label-2 {
+	color: black;
+	font-size: 14px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+.gwt-PanelRounded2 {
+	-webkit-border-radius: 8px;-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color:#BABABA;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px;
+	 box-shadow: #B3B3B3 4px 4px 4px;
+}
+.gwt-PanelRounded3 {
+	-webkit-border-radius: 8px;-moz-border-radius: 8px;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px;
+	 box-shadow: #B3B3B3 4px 4px 4px;
+	background-color: peachpuff;
+}
+.gwt-Label-3 {
+	color: lightcoral;
+	font-size: 14px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+

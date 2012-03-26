@@ -10,14 +10,6 @@
   	<inherits name="com.google.api.gwt.oauth2.OAuth2" />	
 	
 	
-	<inherits name="net.ffxml.gwt.json.JsonRpc"/>
-	
-	
-	<inherits name="com.google.gwt.maps.GoogleMaps"/>
-  	<inherits name="com.google.gwt.i18n.I18N"/>
-  	
-  	<inherits name="com.google.gwt.widgetideas.WidgetIdeas"/>
-  	<inherits name="com.google.gwt.libideas.LibIdeas"/>
 	
 	
 	<entry-point class="com.icarusdb.icanutritionguide.web.client.main"/>

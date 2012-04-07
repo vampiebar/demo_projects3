@@ -9,6 +9,10 @@
 	<!--  inherits name="com.reveregroup.gwt.facebook4gwt.Facebook4gwt" /-->
   	<inherits name="com.google.api.gwt.oauth2.OAuth2" />	
 	
+	<inherits name="com.googlecode.gwt.crypto.Crypto"/>
+	
+	<inherits name="name.pehl.piriti.json.JSON" />
+	<inherits name="name.pehl.piriti.xml.XML" />
 	
 	
 	

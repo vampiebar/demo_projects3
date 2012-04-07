@@ -1,0 +1,2 @@
+serviceClass: com.icarusdb.icanutritionguide.web.client.RPCDietSite
+path: 45152B99C34A4C15B564818692C30296.gwt.rpc

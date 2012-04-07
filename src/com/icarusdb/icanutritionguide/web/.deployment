@@ -1,0 +1,5 @@
+#Fri Apr 06 18:53:41 EEST 2012
+war.name=dietsite.war
+compiler.style=OBFUSCATED
+server.path=/usr/home/vampie/PROJECTS/DEPLOYS/ICADIETSITE
+compiler.memory.max=256m

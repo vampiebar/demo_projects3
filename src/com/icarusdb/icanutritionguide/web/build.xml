@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="ImageViewer" default="all" basedir="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide">
+	<description>
+		This is build file for GWT module 'com.icarusdb.icanutritionguide.web.main' deployment.
+		GWT Designer generates it each time when you initiate deployment.
+		
+		You can use this file later for manual deployment, but keep in mind, that
+		classpath is hardcoded in it, so after changes in classpath you should
+		regenerate build file.
+	</description>
+
+	<property name="gwt.home" value="/usr/home/vampie/PROJECTS/GWT/gwt-2.4.0" />
+	<property name="gwt.module.id" value="com.icarusdb.icanutritionguide.web.main" />
+	<property name="war.name" value="dietsite.war" />
+
+	<target name="jars" description="Package up the module project and required projects as jars">
+		<mkdir dir="war/WEB-INF/lib" />
+		<!--=== ICANutritionGuide ===-->
+		<jar destfile='war/WEB-INF/lib/ICANutritionGuide.jar'>
+			<fileset dir="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/src">
+				<include name="**"/>
+			</fileset>
+			<fileset dir="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/war/WEB-INF/classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+		<copy todir='war/WEB-INF/lib'>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-html5-geolocation.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-oauth2-0.1.1-alpha.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-widgets-0.2.0.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/piriti-core-0.7b2.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/piriti-restlet-0.7b2.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/postgresql-9.0-801.jdbc4.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/totoe-0.2.4.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA-sources.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA.jar"/>
+		</copy>		
+	</target>
+
+	<target name="gwt-compile" description="Compile to JavaScript">
+		<java classname="com.google.gwt.dev.Compiler" fork="yes" failonerror="true" maxmemory="256m">
+			<classpath>
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/src" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/war/WEB-INF/classes" />
+				<pathelement location="/usr/home/vampie/PROJECTS/GWT/gwt-2.4.0/gwt-user.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-html5-geolocation.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-oauth2-0.1.1-alpha.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-widgets-0.2.0.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/piriti-core-0.7b2.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/piriti-restlet-0.7b2.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/postgresql-9.0-801.jdbc4.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/totoe-0.2.4.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA-sources.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/GWT/gwt-2.4.0/gwt-dev.jar" />
+			</classpath>
+			<arg value="-style"/>
+			<arg value="OBFUSCATED"/>
+			<arg value="${gwt.module.id}" />
+		</java>
+	</target>
+
+	<target name="war" depends="gwt-compile, jars">
+		<delete file="${war.name}" />
+		<jar destfile="${war.name}" basedir="war" duplicate="preserve" />
+	</target>
+	
+	<target name="deploy" depends="war">
+		<move file="${war.name}" todir="/usr/home/vampie/PROJECTS/DEPLOYS/ICADIETSITE" />
+	</target>
+
+	<target name="all" depends="deploy" />
+
+</project>

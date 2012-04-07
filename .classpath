@@ -12,5 +12,12 @@
 	<classpathentry kind="lib" path="lib/totoe-0.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA-sources.jar"/>
 	<classpathentry kind="lib" path="lib/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/gwt-crypto.jar"/>
+	<classpathentry kind="lib" path="lib/FatSecretAPI.jar"/>
+	<classpathentry kind="lib" path="lib/gin/aopalliance.jar"/>
+	<classpathentry kind="lib" path="lib/gin/gin-1.5-post-gwt-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/gin/guice-assistedinject-snapshot.jar"/>
+	<classpathentry kind="lib" path="lib/gin/guice-snapshot.jar"/>
+	<classpathentry kind="lib" path="lib/gin/javax.inject.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

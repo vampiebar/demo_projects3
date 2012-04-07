@@ -9,5 +9,13 @@
 	<welcome-file-list>
 		<welcome-file>main.html</welcome-file>
 	</welcome-file-list>
+	<servlet>
+		<servlet-name>RPCDietSite</servlet-name>
+		<servlet-class>com.icarusdb.icanutritionguide.web.server.RPCDietSiteImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RPCDietSite</servlet-name>
+		<url-pattern>/com.icarusdb.icanutritionguide.web.main/RPCDietSite</url-pattern>
+	</servlet-mapping>
 
 </web-app>

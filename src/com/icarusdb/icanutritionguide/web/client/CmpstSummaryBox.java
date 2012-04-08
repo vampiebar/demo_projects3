@@ -298,7 +298,7 @@ public class CmpstSummaryBox extends Composite {
 			 * });
 			 */
 
-			DlgAddFood dlg = new DlgAddFood();
+			DlgSearchFood dlg = new DlgSearchFood();
 
 			dlg.center();
 

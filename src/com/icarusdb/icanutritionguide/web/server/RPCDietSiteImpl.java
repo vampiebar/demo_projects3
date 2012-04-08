@@ -80,4 +80,40 @@ public class RPCDietSiteImpl extends RemoteServiceServlet implements
 
 	}
 
+	@Override
+	public String getFood(String strFoodID) {
+
+		String strTemp = "";
+
+		try {
+
+			strTemp = fsapi.FoodGet(strFoodID);
+
+		} catch (FatSecretException e) {
+
+			e.printStackTrace();
+		}
+
+		return strTemp;
+
+	}
+
+	@Override
+	public String getFoodServings(String strFoodID) {
+
+		String strTemp = "";
+
+		try {
+
+			strTemp = fsapi.FoodGetServings(strFoodID);
+
+		} catch (FatSecretException e) {
+
+			e.printStackTrace();
+		}
+
+		return strTemp;
+
+	}
+
 }

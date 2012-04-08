@@ -26,25 +26,23 @@ public class XMLFoods {
 	// stroke-width="1" stroke-opacity="1.0" stroke="black" fill-opacity="1.0"
 	// fill="blue"></rect>
 
-	@Path("@food_name")
+	/*
+	 * @Path("food") List<String> food;
+	 */
+
+	@Path("food_id")
+	String food_id;
+
+	@Path("food_name")
 	String food_name;
 
-	@Path("@title")
-	String title;
+	@Path("food_type")
+	String food_type;
 
-	@Path("@cx")
-	String cx;
+	@Path("food_url")
+	String food_url;
 
-	@Path("@cy")
-	String cy;
-
-	@Path("@r")
-	String r;
-
-	@Path("@x")
-	String x;
-
-	@Path("@y")
-	String y;
+	@Path("food_description")
+	String food_description;
 
 }

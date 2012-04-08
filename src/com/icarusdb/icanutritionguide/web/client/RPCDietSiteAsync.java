@@ -24,4 +24,8 @@ public interface RPCDietSiteAsync {
 	void getUserToken(String strUserName, AsyncCallback<String> callback);
 
 	void getFoods(String strFood, AsyncCallback<String> callback);
+
+	void getFood(String strFoodID, AsyncCallback<String> callback);
+
+	void getFoodServings(String strFoodID, AsyncCallback<String> callback);
 }

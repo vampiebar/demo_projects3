@@ -504,4 +504,50 @@ a:visited {
 	border: thin solid powderblue;
 	background-color: honeydew;
 }
+.gwt-HorizontalPanelFood3 {
+	padding-left: 30px;
+
+}
+.gwt-Header1 {
+	background-color: #D8ECF7;
+
+}
+.gwt-Label6 {
+	color: #555;
+	font-size: 12px;
+	font-family: sans-serif;
+	line-height: 18px;
+	text-transform: capitalize;
+}
+.gwt-Label7 {
+	color: black;
+	font-size: 16px;
+	font-family: Trebuchet MS, Arial;
+	font-weight: 700;
+	line-height: 2em;
+}
+.gwt-Label8 {
+	color: #555;
+	padding-bottom: 6px;
+	font-size: 14px;
+	font-family: Trebuchet MS, Arial;
+	font-weight: 700;
+	line-height: 18px;
+}
+.gwt-LabelServingItem {
+	color: #555;
+	padding-bottom: 2px;
+	border-bottom: thin solid cornflowerblue;
+	font-size: 12px;
+	cursor: pointer;
+	
+}
+.gwt-LabelServingItemSelected {
+	color: #E45B00;
+	font-size: 12px;
+	cursor: pointer;
+		padding-bottom: 2px;
+	border-bottom: thin solid cornflowerblue;
+	
+}
 

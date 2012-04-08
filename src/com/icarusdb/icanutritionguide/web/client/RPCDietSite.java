@@ -28,6 +28,10 @@ public interface RPCDietSite extends RemoteService {
 
 	String getFoods(String strFood);
 
+	String getFood(String strFoodID);
+
+	String getFoodServings(String strFoodID);
+
 	/**
 	 * Utility class for simplifying access to the instance of async service.
 	 */

@@ -320,6 +320,85 @@ public class FatSecretAPI2 {
 		}
 	}
 
+	// FOOD GET
+	public String FoodGet(String strFoodID) throws FatSecretException {
+		String urlBase = URL_BASE + "method=food.get";
+
+		if (strFoodID != null)
+			urlBase += "&food_id=" + strFoodID;
+
+		try {
+			OAuthBase oAuth = new OAuthBase();
+
+			URL url = new URL(urlBase);
+
+			Result result = new Result();
+
+			oAuth.generateSignature(url, _consumerKey, _consumerSecret, null,
+					null, result);
+
+			String response = doHttpMethodReq(
+					result.getNormalizedUrl(),
+					"POST",
+					result.getNormalizedRequestParameters() + "&"
+							+ OAuthBase.OAUTH_SIGNATURE + "="
+							+ URLEncoder.encode(result.getSignature(), "utf-8"),
+					null);
+			Document doc = loadXmlDocument(response);
+
+			errorCheck(doc);
+
+			return response;
+
+		} catch (FatSecretException ex) {
+			throw ex;
+		} catch (Exception ex) {
+			throw new FatSecretException(1,
+					"An unknown error occurred: 'please try again later'");
+		}
+	}
+
+	// FOOD GET
+	public String FoodGetServings(String strFoodID) throws FatSecretException {
+		String urlBase = URL_BASE + "method=food.get";
+
+		if (strFoodID != null)
+			urlBase += "&food_id=" + strFoodID;
+
+		try {
+			OAuthBase oAuth = new OAuthBase();
+
+			URL url = new URL(urlBase);
+
+			Result result = new Result();
+
+			oAuth.generateSignature(url, _consumerKey, _consumerSecret, null,
+					null, result);
+
+			String response = doHttpMethodReq(
+					result.getNormalizedUrl(),
+					"POST",
+					result.getNormalizedRequestParameters() + "&"
+							+ OAuthBase.OAUTH_SIGNATURE + "="
+							+ URLEncoder.encode(result.getSignature(), "utf-8"),
+					null);
+			Document doc = loadXmlDocument(response);
+
+			errorCheck(doc);
+
+			response = response.substring(response.indexOf("<serving>"),
+					response.lastIndexOf("</servings>"));
+
+			return response;
+
+		} catch (FatSecretException ex) {
+			throw ex;
+		} catch (Exception ex) {
+			throw new FatSecretException(1,
+					"An unknown error occurred: 'please try again later'");
+		}
+	}
+
 	// BARIS END
 
 	/* Private Methods */

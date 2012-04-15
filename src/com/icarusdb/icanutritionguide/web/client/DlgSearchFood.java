@@ -10,6 +10,7 @@ public class DlgSearchFood extends DialogBox {
 	private VerticalPanel vtpanMain;
 
 	public DlgSearchFood() {
+
 		setHTML("Search Food");
 
 		vtpanMain = new VerticalPanel();

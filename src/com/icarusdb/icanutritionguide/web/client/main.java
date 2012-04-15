@@ -15,6 +15,10 @@
  */
 package com.icarusdb.icanutritionguide.web.client;
 
+import org.gwtwidgets.client.wrap.Callback;
+import org.gwtwidgets.client.wrap.Effect;
+import org.gwtwidgets.client.wrap.EffectOption;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -42,6 +46,7 @@ public class main implements EntryPoint {
 	private VerticalPanel vtpanMiddleLeft;
 	private VerticalPanel vtpanMiddleRight;
 	private Label lblStartNow;
+	private HorizontalPanel hzpanLogin1;
 
 	public void onModuleLoad() {
 
@@ -129,13 +134,13 @@ public class main implements EntryPoint {
 		hzpanMiddle.setCellWidth(vtpanMiddleLeft, "690px");
 		vtpanMiddleLeft.setSize("683px", "362px");
 
-		HorizontalPanel horizontalPanel_3 = new HorizontalPanel();
-		vtpanMiddleLeft.add(horizontalPanel_3);
-		horizontalPanel_3.setWidth("100%");
+		hzpanLogin1 = new HorizontalPanel();
+		vtpanMiddleLeft.add(hzpanLogin1);
+		hzpanLogin1.setWidth("620px");
 
 		VerticalPanel verticalPanel_3 = new VerticalPanel();
-		horizontalPanel_3.add(verticalPanel_3);
-		horizontalPanel_3.setCellWidth(verticalPanel_3, "380px");
+		hzpanLogin1.add(verticalPanel_3);
+		hzpanLogin1.setCellWidth(verticalPanel_3, "380px");
 
 		HorizontalPanel horizontalPanel = new HorizontalPanel();
 		horizontalPanel.setStyleName("gwt-HorizontalPanelMiddleWords");
@@ -239,7 +244,7 @@ public class main implements EntryPoint {
 		verticalPanel_4.setStyleName("gwt-VerticalPanelPhoto");
 		verticalPanel_4
 				.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		horizontalPanel_3.add(verticalPanel_4);
+		hzpanLogin1.add(verticalPanel_4);
 		verticalPanel_4.setSize("100%", "332px");
 
 		imgPhoto = new Image("images/photo.jpg");
@@ -347,6 +352,10 @@ public class main implements EntryPoint {
 		grid_1.setWidget(2, 1, lblShopping);
 		lblShopping.setWidth("100px");
 
+		if (!isDesignTime()) {
+
+		}
+
 	}
 
 	// Implement the following method exactly as-is
@@ -357,8 +366,21 @@ public class main implements EntryPoint {
 	private class doLblStartNowClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
-			vtpanMiddleLeft.clear();
-			vtpanMiddleLeft.add(new CmpstSummaryBox());
+			// Effect
+			Callback callback = new Callback() {
+
+				public void execute() {
+
+					vtpanMiddleLeft.clear();
+					hzpanLogin1.setVisible(true);
+
+					vtpanMiddleLeft.add(new CmpstSummaryBox(vtpanMiddleLeft));
+				}
+			};
+			Effect.fade(hzpanLogin1, new EffectOption[] {
+					new EffectOption("duration", 1.2),
+					new EffectOption("afterFinish", callback) });
+
 		}
 	}
 }

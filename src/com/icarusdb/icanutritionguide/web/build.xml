@@ -34,6 +34,13 @@
 			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/totoe-0.2.4.jar"/>
 			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA-sources.jar"/>
 			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-crypto.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/FatSecretAPI.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/aopalliance.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/gin-1.5-post-gwt-2.2.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/guice-assistedinject-snapshot.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/guice-snapshot.jar"/>
+			<fileset file="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/javax.inject.jar"/>
 		</copy>		
 	</target>
 
@@ -52,6 +59,13 @@
 				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/totoe-0.2.4.jar" />
 				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA-sources.jar" />
 				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/validation-api-1.0.0.GA.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gwt-crypto.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/FatSecretAPI.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/aopalliance.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/gin-1.5-post-gwt-2.2.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/guice-assistedinject-snapshot.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/guice-snapshot.jar" />
+				<pathelement location="/usr/home/vampie/PROJECTS/ECLIPSE/ICANutritionGuide/lib/gin/javax.inject.jar" />
 				<pathelement location="/usr/home/vampie/PROJECTS/GWT/gwt-2.4.0/gwt-dev.jar" />
 			</classpath>
 			<arg value="-style"/>

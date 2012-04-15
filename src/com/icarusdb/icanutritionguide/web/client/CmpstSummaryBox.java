@@ -2,10 +2,6 @@ package com.icarusdb.icanutritionguide.web.client;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOutHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.http.client.Request;
 import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
@@ -28,12 +24,19 @@ public class CmpstSummaryBox extends Composite {
 	private VerticalPanel vtpanActivity;
 	private Button btnTotalCalDetails;
 
-	public CmpstSummaryBox() {
+	private VerticalPanel _vtpanParent;
+
+	private CmpstSearchFood _cmpstSearchFood;
+
+	public CmpstSummaryBox(VerticalPanel vtpanParent) {
+
+		_vtpanParent = vtpanParent;
 
 		vtpanSummaryBox = new VerticalPanel();
 		vtpanSummaryBox
 				.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
 		initWidget(vtpanSummaryBox);
+		vtpanSummaryBox.setHeight("120px");
 
 		HorizontalPanel horizontalPanel = new HorizontalPanel();
 		horizontalPanel.setSpacing(6);
@@ -67,8 +70,6 @@ public class CmpstSummaryBox extends Composite {
 
 		btnAddFood = new Button("New button");
 		btnAddFood.addClickHandler(new doBtnAddFoodClickHandler());
-		btnAddFood.addMouseOutHandler(new doBtnAddFoodMouseOutHandler());
-		btnAddFood.addMouseOverHandler(new doBtnAddFoodMouseOverHandler());
 		btnAddFood.setStyleName("gwt-ButtonAdd");
 		btnAddFood.setText("Add Food");
 		verticalPanel.add(btnAddFood);
@@ -153,28 +154,16 @@ public class CmpstSummaryBox extends Composite {
 		label_4.setStyleName("gwt-Label-2");
 		verticalPanel_3.add(label_4);
 
+		if (!isDesignTime()) {
+
+			_cmpstSearchFood = new CmpstSearchFood();
+		}
+
 	}
 
 	// Implement the following method exactly as-is
 	private static final boolean isDesignTime() {
 		return false;
-	}
-
-	private class doBtnAddFoodMouseOverHandler implements MouseOverHandler {
-
-		public void onMouseOver(MouseOverEvent event) {
-
-			// btnAddFood.setStyleName("gwt-ButtonAdd-rollover");
-
-		}
-	}
-
-	private class doBtnAddFoodMouseOutHandler implements MouseOutHandler {
-		public void onMouseOut(MouseOutEvent event) {
-
-			// btnAddFood.setStyleName("gwt-ButtonAdd");
-
-		}
 	}
 
 	private class doButtonClickHandler implements ClickHandler {
@@ -225,54 +214,61 @@ public class CmpstSummaryBox extends Composite {
 	private class doBtnAddFoodClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
-			RPCDietSite.Util.getInstance().newUser("barisaaaa",
-					new AsyncCallback<String>() {
-
-						@Override
-						public void onSuccess(String result) {
-
-							if (result.length() < 2) {
-
-								getExistingUserAuth("barisaaaa");
-
-							} else {
-
-								Window.alert("result: " + result);
-							}
-						}
-
-						@Override
-						public void onFailure(Throwable caught) {
-
-							Window.alert("Error: " + caught.getMessage());
-
-						}
-					});
+			_vtpanParent.remove(_cmpstSearchFood);
+			_vtpanParent.add(_cmpstSearchFood);
 
 		}
 
-		protected void getExistingUserAuth(String strUser) {
+	}
 
-			RPCDietSite.Util.getInstance().getUserToken(strUser,
-					new AsyncCallback<String>() {
+	public void addNewUser(final String strUser) {
 
-						@Override
-						public void onSuccess(String result) {
+		RPCDietSite.Util.getInstance().newUser(strUser,
+				new AsyncCallback<String>() {
+
+					@Override
+					public void onSuccess(String result) {
+
+						if (result.length() < 2) {
+
+							getExistingUserAuth(strUser);
+
+						} else {
 
 							Window.alert("result: " + result);
-
 						}
+					}
 
-						@Override
-						public void onFailure(Throwable caught) {
+					@Override
+					public void onFailure(Throwable caught) {
 
-							Window.alert("Error: " + caught.getMessage());
+						Window.alert("Error: " + caught.getMessage());
 
-						}
+					}
+				});
 
-					});
+	}
 
-		}
+	protected void getExistingUserAuth(String strUser) {
+
+		RPCDietSite.Util.getInstance().getUserToken(strUser,
+				new AsyncCallback<String>() {
+
+					@Override
+					public void onSuccess(String result) {
+
+						Window.alert("result: " + result);
+
+					}
+
+					@Override
+					public void onFailure(Throwable caught) {
+
+						Window.alert("Error: " + caught.getMessage());
+
+					}
+
+				});
 
 	}
 
@@ -298,9 +294,9 @@ public class CmpstSummaryBox extends Composite {
 			 * });
 			 */
 
-			DlgSearchFood dlg = new DlgSearchFood();
+			// DlgSearchFood dlg = new DlgSearchFood();
 
-			dlg.center();
+			// dlg.center();
 
 		}
 

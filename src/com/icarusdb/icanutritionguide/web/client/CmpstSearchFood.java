@@ -19,7 +19,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CmpstSearchFood extends Composite {
-	private VerticalPanel verticalPanel;
+	private VerticalPanel vtpanMain;
 	private TextBox tctFoodSearch;
 	private Button btnFoodSearch;
 	private VerticalPanel vtpanFoodResults;
@@ -27,15 +27,16 @@ public class CmpstSearchFood extends Composite {
 
 	public CmpstSearchFood() {
 
-		verticalPanel = new VerticalPanel();
-		verticalPanel.setStyleName("gwt-VerticalPanelFoodAdd");
-		initWidget(verticalPanel);
-		verticalPanel.setWidth("100%");
+		vtpanMain = new VerticalPanel();
+		vtpanMain.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		vtpanMain.setStyleName("gwt-VerticalPanelFoodAdd1");
+		initWidget(vtpanMain);
+		vtpanMain.setWidth("100%");
 
 		HorizontalPanel horizontalPanel = new HorizontalPanel();
-		verticalPanel.add(horizontalPanel);
-		verticalPanel.setCellHeight(horizontalPanel, "50px");
-		horizontalPanel.setWidth("100%");
+		vtpanMain.add(horizontalPanel);
+		vtpanMain.setCellHeight(horizontalPanel, "50px");
+		horizontalPanel.setWidth("90%");
 
 		HorizontalPanel horizontalPanel_1 = new HorizontalPanel();
 		horizontalPanel_1
@@ -46,11 +47,12 @@ public class CmpstSearchFood extends Composite {
 		horizontalPanel.add(horizontalPanel_1);
 		horizontalPanel_1.setWidth("100%");
 
-		Label lblNewLabel = new Label("Please enter food name");
+		Label lblNewLabel = new Label("Please find food to add your diary");
 		lblNewLabel.setStyleName("gwt-LabelMenu");
 		horizontalPanel_1.add(lblNewLabel);
 
 		tctFoodSearch = new TextBox();
+		tctFoodSearch.setText("turkey");
 		tctFoodSearch
 				.addValueChangeHandler(new doTctFoodSearchValueChangeHandler());
 		tctFoodSearch.setStyleName("gwt-TextBox1");
@@ -63,12 +65,13 @@ public class CmpstSearchFood extends Composite {
 		horizontalPanel_1.add(btnFoodSearch);
 
 		scpanFoodResults = new ScrollPanel();
-		verticalPanel.add(scpanFoodResults);
-		scpanFoodResults.setSize("100%", "550px");
+		vtpanMain.add(scpanFoodResults);
+		scpanFoodResults.setSize("600px", "1px");
 
 		vtpanFoodResults = new VerticalPanel();
+		vtpanFoodResults.setSpacing(8);
 		scpanFoodResults.setWidget(vtpanFoodResults);
-		vtpanFoodResults.setSize("100%", "100%");
+		vtpanFoodResults.setSize("90%", "100%");
 	}
 
 	private class doBtnFoodSearchClickHandler implements ClickHandler {
@@ -93,6 +96,12 @@ public class CmpstSearchFood extends Composite {
 						 * XmlParser() .parse(result);
 						 */
 
+						// EFFECT Resize scpan
+						scpanFoodResults.setHeight("550px");
+						vtpanMain.getElement().scrollIntoView();
+
+						// Effect.grow(scpanFoodResults);
+
 						result = result.substring(result.indexOf("<food>"),
 								result.lastIndexOf("</foods>"));
 
@@ -116,9 +125,12 @@ public class CmpstSearchFood extends Composite {
 							strFoodUrl = xmfl.get(i).food_url;
 							strFoodDesc = xmfl.get(i).food_description;
 
-							vtpanFoodResults.add(new CmpstFoodItem(strFoodID,
+							CmpstFoodItem cfi = new CmpstFoodItem(strFoodID,
 									strFoodName, strFoodType, strFoodUrl,
-									strFoodDesc));
+									strFoodDesc, i, scpanFoodResults,
+									vtpanFoodResults);
+
+							vtpanFoodResults.add(cfi);
 						}
 
 						// Window.alert("size " + xmfl.size());

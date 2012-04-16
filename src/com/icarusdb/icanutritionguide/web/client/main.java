@@ -129,6 +129,7 @@ public class main implements EntryPoint {
 		hzpanMiddle.setSize("100%", "900px");
 
 		vtpanMiddleLeft = new VerticalPanel();
+		vtpanMiddleLeft.setSpacing(10);
 		vtpanMiddleLeft.setStyleName("gwt-HorizontalPanelMiddleInner");
 		hzpanMiddle.add(vtpanMiddleLeft);
 		hzpanMiddle.setCellWidth(vtpanMiddleLeft, "690px");

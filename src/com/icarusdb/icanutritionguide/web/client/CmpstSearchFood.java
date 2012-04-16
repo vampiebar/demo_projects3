@@ -63,6 +63,7 @@ public class CmpstSearchFood extends Composite {
 		btnFoodSearch.addClickHandler(new doBtnFoodSearchClickHandler());
 		btnFoodSearch.setText("Search Food");
 		horizontalPanel_1.add(btnFoodSearch);
+		btnFoodSearch.setWidth("120px");
 
 		scpanFoodResults = new ScrollPanel();
 		vtpanMain.add(scpanFoodResults);

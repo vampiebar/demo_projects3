@@ -35,6 +35,9 @@ public class CmpstFoodItem extends Composite {
 
 	public ScrollPanel _scpanParent;
 	public VerticalPanel _vtpanParent;
+	public Button btnAdd;
+
+	public CmpstFoodAmountAndUnit _cfaau;
 
 	public CmpstFoodItem(String strFoodID, String strFoodName,
 			String strFoodType, String strFoodUrl, String strFoodDesc,
@@ -82,7 +85,7 @@ public class CmpstFoodItem extends Composite {
 		horizontalPanel_1.add(lblFoodName);
 		lblFoodName.setWidth("380px");
 
-		Button btnAdd = new Button("New button");
+		btnAdd = new Button("New button");
 		btnAdd.addClickHandler(new doBtnAddClickHandler());
 		btnAdd.setText("Add");
 		btnAdd.setStyleName("gwt-Button1");
@@ -133,11 +136,14 @@ public class CmpstFoodItem extends Composite {
 
 		if (!isDesignTime()) {
 
+			_cfaau = new CmpstFoodAmountAndUnit("");
+
 			Effect.appear(vtpanMain, new EffectOption[] {
 
 			new EffectOption("duration", (_index + 1) * 0.3),
 			// new EffectOption("afterFinish", callback)
 					});
+
 		}
 
 	}
@@ -150,19 +156,23 @@ public class CmpstFoodItem extends Composite {
 	private class doImgFoodDetailClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
-			if (frmFoodDetail.isVisible()) {
+			/*
+			 * if (frmFoodDetail.isVisible()) {
+			 * 
+			 * imgFoodDetail.setUrl("images/navicons/40.png");
+			 * frmFoodDetail.setVisible(false); frmFoodDetail.setUrl("");
+			 * 
+			 * } else {
+			 * 
+			 * imgFoodDetail.setUrl("images/navicons/39.png");
+			 * frmFoodDetail.setVisible(true); frmFoodDetail.setUrl(_foodUrl);
+			 * 
+			 * }
+			 */
 
-				imgFoodDetail.setUrl("images/navicons/40.png");
-				frmFoodDetail.setVisible(false);
-				frmFoodDetail.setUrl("");
+			DlgFoodDetail dfd = new DlgFoodDetail(_foodID, _foodName);
 
-			} else {
-
-				imgFoodDetail.setUrl("images/navicons/39.png");
-				frmFoodDetail.setVisible(true);
-				frmFoodDetail.setUrl(_foodUrl);
-
-			}
+			dfd.center();
 
 		}
 	}
@@ -197,8 +207,23 @@ public class CmpstFoodItem extends Composite {
 			 * // } }
 			 */
 
+			CmpstFoodItem cfi = (CmpstFoodItem) _vtpanParent.getWidget(_index);
 			_vtpanParent.clear();
+			// cfi.btnAdd.setVisible(false);
+			cfi.btnAdd.setText("Clear");
+			_vtpanParent.add(cfi);
+
 			_scpanParent.setHeight(_vtpanParent.getOffsetHeight() + "px");
+
+			Effect.highlight(cfi);
+
+			CmpstSummaryBox._vtpanParent.remove(_cfaau);
+			CmpstSummaryBox._vtpanParent.add(_cfaau);
+			Effect.appear(_cfaau, new EffectOption[] {
+
+			new EffectOption("duration", 2.0),
+			// new EffectOption("afterFinish", callback)
+					});
 
 		}
 	}

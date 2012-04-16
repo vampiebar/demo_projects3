@@ -595,4 +595,29 @@ font-family: Arial;
 	padding-bottom: 30px;
 
 }
+.gwt-VerticalPanelFoodAdd2 {
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px; 
+	box-shadow: #B3B3B3 4px 4px 4px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #9cdafb;
+
+
+}
+.gwt-VerticalPanelFoodAdd3 {
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px; 
+	box-shadow: #B3B3B3 4px 4px 4px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #ffd1d7;
+
+
+}
 

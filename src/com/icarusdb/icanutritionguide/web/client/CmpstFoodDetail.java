@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.datepicker.client.DateBox;
 import com.google.gwt.user.datepicker.client.DateBox.DefaultFormat;
 
-public class CmpstAddFood extends Composite {
+public class CmpstFoodDetail extends Composite {
 
 	public String _foodID;
 	public String _foodName;
@@ -38,7 +38,7 @@ public class CmpstAddFood extends Composite {
 	private HorizontalPanel horizontalPanel_1;
 	private Label lblNewLabel_3;
 	private DoubleBox tctAmount;
-	private VerticalPanel verticalPanel_3;
+	private VerticalPanel vtpanAdd;
 	private HorizontalPanel horizontalPanel_3;
 	private Label lblNewLabel_4;
 	private ListBox cbxMeal;
@@ -67,7 +67,7 @@ public class CmpstAddFood extends Composite {
 
 	public DialogBox _dlgParent;
 
-	public CmpstAddFood(String strFoodID, String strFoodName,
+	public CmpstFoodDetail(String strFoodID, String strFoodName,
 			DialogBox dlgParent) {
 
 		_foodID = strFoodID;
@@ -130,18 +130,19 @@ public class CmpstAddFood extends Composite {
 		lblNewLabel_5.setStyleName("gwt-LabelServingItem");
 		vtpanServings.add(lblNewLabel_5);
 
-		verticalPanel_3 = new VerticalPanel();
-		verticalPanel_1.add(verticalPanel_3);
+		vtpanAdd = new VerticalPanel();
+		vtpanAdd.setVisible(false);
+		verticalPanel_1.add(vtpanAdd);
 
 		lblAddThisItem = new Label("Add this item");
-		verticalPanel_3.add(lblAddThisItem);
+		vtpanAdd.add(lblAddThisItem);
 		lblAddThisItem.setStyleName("gwt-Label8");
 
 		horizontalPanel_7 = new HorizontalPanel();
 		horizontalPanel_7
 				.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		horizontalPanel_7.setSpacing(6);
-		verticalPanel_3.add(horizontalPanel_7);
+		vtpanAdd.add(horizontalPanel_7);
 
 		lblDate = new Label("DATE");
 		horizontalPanel_7.add(lblDate);
@@ -157,7 +158,7 @@ public class CmpstAddFood extends Composite {
 		horizontalPanel_3
 				.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		horizontalPanel_3.setSpacing(6);
-		verticalPanel_3.add(horizontalPanel_3);
+		vtpanAdd.add(horizontalPanel_3);
 
 		lblNewLabel_4 = new Label("MEAL");
 		horizontalPanel_3.add(lblNewLabel_4);
@@ -174,7 +175,7 @@ public class CmpstAddFood extends Composite {
 		horizontalPanel_4
 				.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 		horizontalPanel_4.setSpacing(6);
-		verticalPanel_3.add(horizontalPanel_4);
+		vtpanAdd.add(horizontalPanel_4);
 
 		lblName = new Label("NAME");
 		horizontalPanel_4.add(lblName);
@@ -185,7 +186,7 @@ public class CmpstAddFood extends Composite {
 
 		horizontalPanel_1 = new HorizontalPanel();
 		horizontalPanel_1.setSpacing(2);
-		verticalPanel_3.add(horizontalPanel_1);
+		vtpanAdd.add(horizontalPanel_1);
 		horizontalPanel_1
 				.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
@@ -208,16 +209,16 @@ public class CmpstAddFood extends Composite {
 
 		horizontalPanel_8 = new HorizontalPanel();
 		horizontalPanel_8.setSpacing(4);
-		verticalPanel_3.add(horizontalPanel_8);
+		vtpanAdd.add(horizontalPanel_8);
 		horizontalPanel_8.setWidth("100%");
 
 		btnSave = new Button("New button");
 		horizontalPanel_8.add(btnSave);
 		btnSave.setWidth("80px");
 		btnSave.setText("SAVE");
-		verticalPanel_3.setCellHorizontalAlignment(btnSave,
+		vtpanAdd.setCellHorizontalAlignment(btnSave,
 				HasHorizontalAlignment.ALIGN_CENTER);
-		verticalPanel_3.setCellVerticalAlignment(btnSave,
+		vtpanAdd.setCellVerticalAlignment(btnSave,
 				HasVerticalAlignment.ALIGN_MIDDLE);
 
 		btnCancel = new Button("New button");

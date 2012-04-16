@@ -24,8 +24,9 @@ public class CmpstSummaryBox extends Composite {
 	private VerticalPanel vtpanActivity;
 	private Button btnTotalCalDetails;
 
-	private VerticalPanel _vtpanParent;
+	static public VerticalPanel _vtpanParent;
 
+	private CmpstFoodDate _cmpstFoodDate;
 	private CmpstSearchFood _cmpstSearchFood;
 
 	public CmpstSummaryBox(VerticalPanel vtpanParent) {
@@ -156,6 +157,7 @@ public class CmpstSummaryBox extends Composite {
 
 		if (!isDesignTime()) {
 
+			_cmpstFoodDate = new CmpstFoodDate();
 			_cmpstSearchFood = new CmpstSearchFood();
 		}
 
@@ -213,6 +215,9 @@ public class CmpstSummaryBox extends Composite {
 
 	private class doBtnAddFoodClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
+
+			_vtpanParent.remove(_cmpstFoodDate);
+			_vtpanParent.add(_cmpstFoodDate);
 
 			_vtpanParent.remove(_cmpstSearchFood);
 			_vtpanParent.add(_cmpstSearchFood);

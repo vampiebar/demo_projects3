@@ -620,4 +620,32 @@ font-family: Arial;
 
 
 }
+.gwt-VerticalPanelFoodAdd4 {
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 4px 4px 4px; 
+	box-shadow: #B3B3B3 4px 4px 4px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #eae0f4;
+
+
+}
+.gwt-VerticalPanelFoodAdd5 {
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-box-shadow: #B3B3B3 4px 4px 4px;
+	-moz-box-shadow: #B3B3B3 6px 6px 6px; 
+	box-shadow: #B3B3B3 4px 4px 4px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #e6d4f4;
+
+}
+.gwt-VerticalPanel1 {
+	padding-left: 20px;
+}
 

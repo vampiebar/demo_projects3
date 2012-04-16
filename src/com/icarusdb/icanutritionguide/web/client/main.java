@@ -22,6 +22,7 @@ import org.gwtwidgets.client.wrap.EffectOption;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
@@ -38,6 +39,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class main implements EntryPoint {
+
 	private VerticalPanel vtpanMain;
 	private HorizontalPanel hzpanBanner;
 	private HorizontalPanel hzpanMenu;
@@ -47,6 +49,9 @@ public class main implements EntryPoint {
 	private VerticalPanel vtpanMiddleRight;
 	private Label lblStartNow;
 	private HorizontalPanel hzpanLogin1;
+
+	static public String _oauthToken = "5a40f7f6de0f4408ab17d25355c0b47d";
+	static public String _oauthSecret = "26c8de0850244c6a97352112bc2c2047";
 
 	public void onModuleLoad() {
 
@@ -367,6 +372,23 @@ public class main implements EntryPoint {
 	private class doLblStartNowClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
+			RPCDietSite.Util.getInstance().getUserToken("barisaaaa",
+					new AsyncCallback<String>() {
+
+						@Override
+						public void onSuccess(String result) {
+							// TODO Auto-generated method stub
+
+							// Window.alert("Token: " + result);
+						}
+
+						@Override
+						public void onFailure(Throwable caught) {
+							// TODO Auto-generated method stub
+
+						}
+					});
+
 			// Effect
 			Callback callback = new Callback() {
 
@@ -376,6 +398,8 @@ public class main implements EntryPoint {
 					hzpanLogin1.setVisible(true);
 
 					vtpanMiddleLeft.add(new CmpstSummaryBox(vtpanMiddleLeft));
+					vtpanMiddleLeft.add(new CmpstFoodDiary());
+
 				}
 			};
 			Effect.fade(hzpanLogin1, new EffectOption[] {

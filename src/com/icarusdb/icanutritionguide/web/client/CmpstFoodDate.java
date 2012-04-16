@@ -19,7 +19,7 @@ public class CmpstFoodDate extends Composite {
 	private VerticalPanel vtpanMain;
 	private Button btnChooseDate;
 	private DateBox dtpDate;
-	private ListBox cbxMealTime;
+	static public ListBox cbxMealTime;
 
 	public CmpstFoodDate() {
 
@@ -97,5 +97,7 @@ public class CmpstFoodDate extends Composite {
 
 			dtpDate.setFocus(true);
 		}
+
 	}
+
 }

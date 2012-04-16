@@ -134,6 +134,7 @@ public class FatSecretAPI2 {
 					.item(0).getTextContent(), doc
 					.getElementsByTagName("auth_secret").item(0)
 					.getTextContent());
+
 		} catch (FatSecretException ex) {
 			throw ex;
 		} catch (Exception ex) {
@@ -358,8 +359,9 @@ public class FatSecretAPI2 {
 		}
 	}
 
-	// FOOD GET
+	// FOOD SERVINGS GET
 	public String FoodGetServings(String strFoodID) throws FatSecretException {
+
 		String urlBase = URL_BASE + "method=food.get";
 
 		if (strFoodID != null)
@@ -388,6 +390,107 @@ public class FatSecretAPI2 {
 
 			response = response.substring(response.indexOf("<serving>"),
 					response.lastIndexOf("</servings>"));
+
+			return response;
+
+		} catch (FatSecretException ex) {
+			throw ex;
+		} catch (Exception ex) {
+			throw new FatSecretException(1,
+					"An unknown error occurred: 'please try again later'");
+		}
+	}
+
+	// FOOD ADD
+	public String FoodAdd(String strOauthToken, String strOauthSecret,
+			String strFoodID, String strFoodName, String strServingID,
+			String strAmount, String strMeal, String strDate)
+			throws FatSecretException {
+
+		String urlBase = URL_BASE + "method=food_entry.create";
+
+		// urlBase += "&oauth_token=" + strOauthToken;
+
+		if (strFoodID != null) {
+			urlBase += "&food_id=" + strFoodID;
+		}
+
+		urlBase += "&food_entry_name=" + "TTTTT";
+		urlBase += "&serving_id=" + strServingID;
+		urlBase += "&number_of_units=" + strAmount;
+		urlBase += "&meal=" + strMeal;
+		// urlBase += "&date=" + strDate;
+
+		System.out.println("URL: " + urlBase);
+
+		try {
+			OAuthBase oAuth = new OAuthBase();
+
+			URL url = new URL(urlBase);
+
+			Result result = new Result();
+
+			oAuth.generateSignature(url, _consumerKey, _consumerSecret,
+					strOauthToken, strOauthSecret, result);
+
+			String response = doHttpMethodReq(
+					result.getNormalizedUrl(),
+					"POST",
+					result.getNormalizedRequestParameters() + "&"
+							+ OAuthBase.OAUTH_SIGNATURE + "="
+							+ URLEncoder.encode(result.getSignature(), "utf-8"),
+					null);
+
+			Document doc = loadXmlDocument(response);
+
+			errorCheck(doc);
+
+			// response = response.substring(response.indexOf("<serving>"),
+			// response.lastIndexOf("</servings>"));
+
+			return response;
+
+		} catch (FatSecretException ex) {
+			throw ex;
+		} catch (Exception ex) {
+			throw new FatSecretException(1,
+					"An unknown error occurred: 'please try again later'");
+		}
+	}
+
+	// FOOD GET ENTRIES BY DATE
+	public String FoodEntriesByDate(String strOauthToken,
+			String strOauthSecret, String strDate) throws FatSecretException {
+
+		String urlBase = URL_BASE + "method=food_entries.get";
+
+		/*
+		 * if (strDate != null) { urlBase += "&date=" + 14289; }
+		 */
+		try {
+			OAuthBase oAuth = new OAuthBase();
+
+			URL url = new URL(urlBase);
+
+			Result result = new Result();
+
+			oAuth.generateSignature(url, _consumerKey, _consumerSecret,
+					strOauthToken, strOauthSecret, result);
+
+			String response = doHttpMethodReq(
+					result.getNormalizedUrl(),
+					"POST",
+					result.getNormalizedRequestParameters() + "&"
+							+ OAuthBase.OAUTH_SIGNATURE + "="
+							+ URLEncoder.encode(result.getSignature(), "utf-8"),
+					null);
+
+			Document doc = loadXmlDocument(response);
+
+			errorCheck(doc);
+
+			// response = response.substring(response.indexOf("<serving>"),
+			// response.lastIndexOf("</servings>"));
 
 			return response;
 

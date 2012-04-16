@@ -53,7 +53,7 @@ public class RPCDietSiteImpl extends RemoteServiceServlet implements
 
 			FatSecretAuth fsa = fsapi.ProfileGetAuth(strUserName);
 
-			strTemp = fsa.getToken();
+			strTemp = fsa.getSecret();
 
 		} catch (FatSecretException e) {
 			e.printStackTrace();
@@ -116,4 +116,44 @@ public class RPCDietSiteImpl extends RemoteServiceServlet implements
 
 	}
 
+	@Override
+	public String getFoodAdd(String strOauthToken, String strOauthSecret,
+			String strFoodID, String strFoodName, String strServingID,
+			String strAmount, String strMeal, String strDate) {
+
+		String strTemp = "";
+
+		try {
+
+			strTemp = fsapi.FoodAdd(strOauthToken, strOauthSecret, strFoodID,
+					strFoodName, strServingID, strAmount, strMeal, strDate);
+
+		} catch (FatSecretException e) {
+
+			e.printStackTrace();
+		}
+
+		return strTemp;
+
+	}
+
+	@Override
+	public String getFoodEntriesByDate(String strOauthToken,
+			String strOauthSecret, String strDate) {
+
+		String strTemp = "";
+
+		try {
+
+			strTemp = fsapi.FoodEntriesByDate(strOauthToken, strOauthSecret,
+					strDate);
+
+		} catch (FatSecretException e) {
+
+			e.printStackTrace();
+		}
+
+		return strTemp;
+
+	}
 }

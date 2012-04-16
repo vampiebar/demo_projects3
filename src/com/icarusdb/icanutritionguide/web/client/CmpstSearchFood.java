@@ -157,5 +157,7 @@ public class CmpstSearchFood extends Composite {
 
 			new doBtnFoodSearchClickHandler().onClick(null);
 		}
+
 	}
+
 }

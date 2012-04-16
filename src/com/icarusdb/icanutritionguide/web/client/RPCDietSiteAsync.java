@@ -28,4 +28,11 @@ public interface RPCDietSiteAsync {
 	void getFood(String strFoodID, AsyncCallback<String> callback);
 
 	void getFoodServings(String strFoodID, AsyncCallback<String> callback);
+
+	void getFoodAdd(String strOauthToken, String strOauthSecret,
+			String strFoodID, String strFoodName, String strServingID,
+			String strAmount, String strMeal, String strDate, AsyncCallback<String> callback);
+
+	void getFoodEntriesByDate(String strOauthToken, String strOauthSecret,
+			String strDate, AsyncCallback<String> callback);
 }

@@ -107,7 +107,7 @@ public class CmpstFoodItem extends Composite {
 		horizontalPanel_2.add(horizontalPanel_3);
 		horizontalPanel_3.setWidth("");
 
-		lblFoodDesc = new Label("_foodDesc");
+		lblFoodDesc = new Label(_foodDesc);
 		horizontalPanel_3.add(lblFoodDesc);
 		horizontalPanel_3.setCellVerticalAlignment(lblFoodDesc,
 				HasVerticalAlignment.ALIGN_MIDDLE);
@@ -136,7 +136,7 @@ public class CmpstFoodItem extends Composite {
 
 		if (!isDesignTime()) {
 
-			_cfaau = new CmpstFoodAmountAndUnit("");
+			_cfaau = new CmpstFoodAmountAndUnit("", "");
 
 			Effect.appear(vtpanMain, new EffectOption[] {
 
@@ -180,42 +180,17 @@ public class CmpstFoodItem extends Composite {
 	private class doBtnAddClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
-			// DlgAddFood dlg = new DlgAddFood(_foodID, _foodName);
-			// dlg.center();
-
-			/*
-			 * for (int i = 0; i < vtpanMain.getWidgetCount(); i++) {
-			 * 
-			 * // if (i != _index) {
-			 * 
-			 * // _vtpanParent.getWidget(i).setVisible(false);
-			 * 
-			 * // Effect.fade(wdg, new EffectOption[] {
-			 * 
-			 * // new EffectOption("duration", 1.0),
-			 * 
-			 * new EffectOption("afterFinish", new Callback() {
-			 * 
-			 * @Override public void execute() {
-			 * 
-			 * // wdg.setVisible(false); // _vtpanParent.remove(wdg);
-			 * 
-			 * } })
-			 * 
-			 * // });
-			 * 
-			 * // } }
-			 */
-
 			CmpstFoodItem cfi = (CmpstFoodItem) _vtpanParent.getWidget(_index);
 			_vtpanParent.clear();
-			// cfi.btnAdd.setVisible(false);
 			cfi.btnAdd.setText("Clear");
 			_vtpanParent.add(cfi);
 
 			_scpanParent.setHeight(_vtpanParent.getOffsetHeight() + "px");
 
 			Effect.highlight(cfi);
+
+			// Window.alert(" Window  " + _foodID);
+			_cfaau.setFood(_foodID, _foodName);
 
 			CmpstSummaryBox._vtpanParent.remove(_cfaau);
 			CmpstSummaryBox._vtpanParent.add(_cfaau);
@@ -226,6 +201,7 @@ public class CmpstFoodItem extends Composite {
 					});
 
 		}
+
 	}
 
 }

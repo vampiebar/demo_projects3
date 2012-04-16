@@ -1,7 +1,10 @@
 package com.icarusdb.icanutritionguide.web.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -17,6 +20,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 public class CmpstFoodAmountAndUnit extends Composite {
 
 	public String _foodID;
+	public String _foodName;
+
 	private ListBox cbxServingType;
 	private TextBox tctDescription;
 	private TextBox tctItem;
@@ -24,10 +29,14 @@ public class CmpstFoodAmountAndUnit extends Composite {
 	private VerticalPanel vtpanMain;
 
 	public List<String> _lstServingID;
+	private Button btnFoodEntry;
 
-	public CmpstFoodAmountAndUnit(String strFoodID) {
+	public CmpstFoodAmountAndUnit(String strFoodID, String strFoodName) {
 
 		_foodID = strFoodID;
+		_foodName = strFoodName;
+
+		_lstServingID = new ArrayList<String>();
 
 		vtpanMain = new VerticalPanel();
 		vtpanMain.setVisible(false);
@@ -56,7 +65,7 @@ public class CmpstFoodAmountAndUnit extends Composite {
 
 		tctItem = new TextBox();
 		tctItem.setReadOnly(true);
-		tctItem.setText("turkey");
+		tctItem.setText(_foodName);
 		tctItem.setStyleName("gwt-TextBox1");
 		horizontalPanel_1.add(tctItem);
 		tctItem.setSize("400px", "24px");
@@ -73,7 +82,7 @@ public class CmpstFoodAmountAndUnit extends Composite {
 		lblDescription.setWidth("140px");
 
 		tctDescription = new TextBox();
-		tctDescription.setText("turkey");
+		tctDescription.setText(_foodName);
 		tctDescription.setStyleName("gwt-TextBox1");
 		horizontalPanel_2.add(tctDescription);
 		tctDescription.setSize("400px", "24px");
@@ -106,15 +115,15 @@ public class CmpstFoodAmountAndUnit extends Composite {
 		verticalPanel_1.add(horizontalPanel_4);
 		horizontalPanel_4.setWidth("100%");
 
-		Button button = new Button("New button");
-		button.setText("Add to meal");
-		button.setStyleName("gwt-Button1");
-		horizontalPanel_4.add(button);
-		button.setHeight("50px");
+		btnFoodEntry = new Button("New button");
+		btnFoodEntry.addClickHandler(new doBtnFoodEntryClickHandler());
+		btnFoodEntry.setText("Add to meal");
+		btnFoodEntry.setStyleName("gwt-Button1");
+		horizontalPanel_4.add(btnFoodEntry);
+		btnFoodEntry.setHeight("50px");
 
 		if (!isDesignTime()) {
 
-			putFoodIdServingsToGui(_foodID);
 		}
 
 	}
@@ -122,6 +131,20 @@ public class CmpstFoodAmountAndUnit extends Composite {
 	// Implement the following method exactly as-is
 	private static final boolean isDesignTime() {
 		return false;
+	}
+
+	public void setFood(String strFoodID, String strFoodName) {
+
+		_foodID = strFoodID;
+		_foodName = strFoodName;
+
+		// Window.alert("strFoodID " + _foodID);
+
+		tctItem.setText(_foodName);
+		tctDescription.setText(_foodName);
+
+		putFoodIdServingsToGui(_foodID);
+
 	}
 
 	// FOOD SERVINGS
@@ -175,5 +198,71 @@ public class CmpstFoodAmountAndUnit extends Composite {
 					}
 
 				});
+
+	}
+
+	public void Test() {
+
+		RPCDietSite.Util.getInstance().getFoodEntriesByDate(main._oauthToken,
+				main._oauthSecret, "14289", new AsyncCallback<String>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+
+						Window.alert("Error: " + caught.getMessage());
+
+					}
+
+					@Override
+					public void onSuccess(String result) {
+
+						Window.alert("testtt " + result);
+
+					}
+
+				});
+
+	}
+
+	private class doBtnFoodEntryClickHandler implements ClickHandler {
+		public void onClick(ClickEvent event) {
+
+			String strFoodID = _foodID;
+			String strFoodName = _foodName;
+			String strServingID = _lstServingID.get(cbxServingType
+					.getSelectedIndex());
+
+			Window.alert("Index serving id " + strServingID);
+
+			String strAmount = tctAmount.getText();
+
+			String strMeal = CmpstFoodDate.cbxMealTime
+					.getItemText(CmpstFoodDate.cbxMealTime.getSelectedIndex());
+
+			String strDate = "14289";
+
+			RPCDietSite.Util.getInstance().getFoodAdd(main._oauthToken,
+					main._oauthSecret, strFoodID, strFoodName, strServingID,
+					strAmount, strMeal, strDate, new AsyncCallback<String>() {
+
+						@Override
+						public void onFailure(Throwable caught) {
+
+							Window.alert("Error: " + caught.getMessage());
+						}
+
+						@Override
+						public void onSuccess(String result) {
+
+							Window.alert("result   .. " + result);
+
+							Test();
+
+						}
+
+					});
+
+		}
+
 	}
 }

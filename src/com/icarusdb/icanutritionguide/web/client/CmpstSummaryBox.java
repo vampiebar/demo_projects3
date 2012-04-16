@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CmpstSummaryBox extends Composite {
+
 	private VerticalPanel vtpanSummaryBox;
 	private Button btnAddFood;
 	private VerticalPanel vtpanFood;

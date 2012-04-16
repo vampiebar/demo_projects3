@@ -21,6 +21,7 @@ public class CmpstFoodAmountAndUnit extends Composite {
 
 	public String _foodID;
 	public String _foodName;
+	public String _dateDay;
 
 	private ListBox cbxServingType;
 	private TextBox tctDescription;
@@ -133,10 +134,11 @@ public class CmpstFoodAmountAndUnit extends Composite {
 		return false;
 	}
 
-	public void setFood(String strFoodID, String strFoodName) {
+	public void setFood(String strFoodID, String strFoodName, String strDateDay) {
 
 		_foodID = strFoodID;
 		_foodName = strFoodName;
+		_dateDay = strDateDay;
 
 		// Window.alert("strFoodID " + _foodID);
 
@@ -201,29 +203,6 @@ public class CmpstFoodAmountAndUnit extends Composite {
 
 	}
 
-	public void Test() {
-
-		RPCDietSite.Util.getInstance().getFoodEntriesByDate(main._oauthToken,
-				main._oauthSecret, "14289", new AsyncCallback<String>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-
-						Window.alert("Error: " + caught.getMessage());
-
-					}
-
-					@Override
-					public void onSuccess(String result) {
-
-						Window.alert("testtt " + result);
-
-					}
-
-				});
-
-	}
-
 	private class doBtnFoodEntryClickHandler implements ClickHandler {
 		public void onClick(ClickEvent event) {
 
@@ -239,7 +218,7 @@ public class CmpstFoodAmountAndUnit extends Composite {
 			String strMeal = CmpstFoodDate.cbxMealTime
 					.getItemText(CmpstFoodDate.cbxMealTime.getSelectedIndex());
 
-			String strDate = "14289";
+			String strDate = _dateDay;
 
 			RPCDietSite.Util.getInstance().getFoodAdd(main._oauthToken,
 					main._oauthSecret, strFoodID, strFoodName, strServingID,
@@ -256,13 +235,10 @@ public class CmpstFoodAmountAndUnit extends Composite {
 
 							Window.alert("result   .. " + result);
 
-							Test();
-
 						}
 
 					});
 
 		}
-
 	}
 }

@@ -464,10 +464,17 @@ public class FatSecretAPI2 {
 
 		String urlBase = URL_BASE + "method=food_entries.get";
 
-		/*
-		 * if (strDate != null) { urlBase += "&date=" + 14289; }
-		 */
+		if (strDate != null) {
+
+			urlBase += "&date=" + strDate;
+
+			System.out.println("date_day: " + strDate);
+		}
+
+		String response = "";
+
 		try {
+
 			OAuthBase oAuth = new OAuthBase();
 
 			URL url = new URL(urlBase);
@@ -477,7 +484,7 @@ public class FatSecretAPI2 {
 			oAuth.generateSignature(url, _consumerKey, _consumerSecret,
 					strOauthToken, strOauthSecret, result);
 
-			String response = doHttpMethodReq(
+			response = doHttpMethodReq(
 					result.getNormalizedUrl(),
 					"POST",
 					result.getNormalizedRequestParameters() + "&"
@@ -489,17 +496,31 @@ public class FatSecretAPI2 {
 
 			errorCheck(doc);
 
-			// response = response.substring(response.indexOf("<serving>"),
-			// response.lastIndexOf("</servings>"));
+			if (response.contains("<food_entry>")) {
+
+				response = response.substring(response.indexOf("<food_entry>"),
+						response.lastIndexOf("</food_entries>"));
+			} else {
+
+				response = "";
+			}
 
 			return response;
 
 		} catch (FatSecretException ex) {
-			throw ex;
+
+			System.out.println("FatSecretException: " + ex.getMessage());
+			// throw ex;
 		} catch (Exception ex) {
-			throw new FatSecretException(1,
-					"An unknown error occurred: 'please try again later'");
+
+			System.out.println("FatSecretException2: " + ex.getMessage());
+
+			// throw new FatSecretException(1,
+			// "An unknown error occurred: 'please try again later'");
 		}
+
+		return response;
+
 	}
 
 	// BARIS END

@@ -14,7 +14,21 @@ public class CmpstFoodDiaryItem extends Composite {
 	private Label lblFoodNutrition;
 	private VerticalPanel vtpanMain;
 
-	public CmpstFoodDiaryItem() {
+	public String _foodEntryID;
+	public String _foodID;
+	public String _foodEntryDesc;
+	public String _numberOfUnits;
+	public String _foodEntryName;
+
+	public CmpstFoodDiaryItem(String food_entry_id, String food_id,
+			String food_entry_description, String number_of_units,
+			String food_entry_name) {
+
+		_foodEntryID = food_entry_id;
+		_foodID = food_id;
+		_foodEntryDesc = food_entry_description;
+		_numberOfUnits = number_of_units;
+		_foodEntryName = food_entry_name;
 
 		vtpanMain = new VerticalPanel();
 		vtpanMain.setStyleName("gwt-VerticalPanelFoodAdd5");
@@ -38,13 +52,13 @@ public class CmpstFoodDiaryItem extends Composite {
 		horizontalPanel_1.add(horizontalPanel_2);
 		horizontalPanel_2.setWidth("218px");
 
-		lblFoodName = new Label("Turkey bacon");
+		lblFoodName = new Label(_foodEntryName);
 		lblFoodName.setWordWrap(false);
 		horizontalPanel_2.add(lblFoodName);
-		lblFoodName.setStyleName("gwt-Label-2");
+		lblFoodName.setStyleName("gwt-Label-4");
 		lblFoodName.setWidth("");
 
-		lblFoodServing = new Label("1 Slice");
+		lblFoodServing = new Label(_foodEntryDesc);
 		lblFoodServing.setWordWrap(false);
 		horizontalPanel_2.add(lblFoodServing);
 		lblFoodServing.setStyleName("gwt-Label8");

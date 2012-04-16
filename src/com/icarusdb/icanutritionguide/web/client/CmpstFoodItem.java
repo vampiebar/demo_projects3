@@ -190,7 +190,10 @@ public class CmpstFoodItem extends Composite {
 			Effect.highlight(cfi);
 
 			// Window.alert(" Window  " + _foodID);
-			_cfaau.setFood(_foodID, _foodName);
+
+			String strDateDay = String.valueOf((CmpstFoodDate.dtpDate
+					.getValue().getTime() / (24 * 60 * 60 * 1000)) + 1);
+			_cfaau.setFood(_foodID, _foodName, strDateDay);
 
 			CmpstSummaryBox._vtpanParent.remove(_cfaau);
 			CmpstSummaryBox._vtpanParent.add(_cfaau);
@@ -201,7 +204,6 @@ public class CmpstFoodItem extends Composite {
 					});
 
 		}
-
 	}
 
 }

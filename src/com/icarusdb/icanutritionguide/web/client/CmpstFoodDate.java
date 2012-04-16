@@ -18,7 +18,7 @@ import com.google.gwt.user.datepicker.client.DateBox.DefaultFormat;
 public class CmpstFoodDate extends Composite {
 	private VerticalPanel vtpanMain;
 	private Button btnChooseDate;
-	private DateBox dtpDate;
+	static public DateBox dtpDate;
 	static public ListBox cbxMealTime;
 
 	public CmpstFoodDate() {
